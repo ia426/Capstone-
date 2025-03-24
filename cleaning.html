@@ -3102,6 +3102,9 @@ dttm   (4): start, end, _submission_time, _date_modified
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 </div>
+</section>
+<section id="basic-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="basic-cleaning">Basic Cleaning</h2>
 <p>Older codes that were used for basic cleaning for Randomization</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change variable names to remove spaces</span></span>
@@ -3128,6 +3131,38 @@ dttm   (4): start, end, _submission_time, _date_modified
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>         (<span class="fu">c</span>(are_you_currently_expecting_a_child_soon, </span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>            are_you_currently_caring_for_any_children_under_the_age_of_5_years), </span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span> . <span class="sc">!=</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="new-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="new-cleaning">New Cleaning</h2>
+<p>This is also used for creating the codebook.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>b_dice <span class="ot">&lt;-</span> b_dice <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>x1) </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>b_dice <span class="ot">&lt;-</span> b_dice <span class="sc">|&gt;</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">enum_id =</span> select_your_name_to_start,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">enum_name =</span> enter_your_id_number_to_access_the_questionaire,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">hh_geocode =</span> take_the_household_geocode,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">phone =</span> do_you_personally_have_a_phone_number,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">language_pref =</span> if_you_can_read_or_were_to_ask_someones_help_to_read_a_message_sent_to_your_phone_which_language_would_you_prefer_to_receive_the_message,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">language_other =</span> please_specify_the_other_language_you_prefer_the_language_to_receive_the_message,</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">expecting_child =</span> are_you_currently_expecting_a_child_soon,</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">expecting_weeks =</span> if_expectant_how_many_weeks,</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">caring_child_under5 =</span> are_you_currently_caring_for_any_children_under_the_age_of_5_years,</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">name_nearest_health_facility =</span> what_is_the_name_of_the_nearest_health_facility,</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">km_health_facility =</span> what_is_the_estimated_distance_to_health_facility_in_km,</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">informal_education =</span> attendance_yes_informal,</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">formal_education =</span> attendance_yes_formal,</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">no_formal_informal_edu =</span> attendance_neither_formal_or_informal,</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">formal_level_education =</span> what_is_your_formal_education_level,</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">number_children_under5 =</span> how_many_children_under_the_age_of_five_years_are_living_in_your_household,</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">mch_booklet =</span> does_your_child_own_mch_booklet_containing_his_or_her_immunization_status,</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">gender_child =</span> please_provide_me_name_child_gender_identity,</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>         <span class="at">dob_indicated_booklet =</span> is_birth_date_indicated_in_the_booklet,</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>         <span class="at">dob_in_booklet =</span> what_is_name_child_date_of_birth_indicated_in_the_mch_booklet</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 

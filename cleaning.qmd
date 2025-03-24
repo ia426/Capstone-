@@ -25,6 +25,8 @@ Loading Survey Data
 b_dice <- read_csv("data/dice_baseline_clean.csv")
 ```
 
+## Basic Cleaning 
+
 Older codes that were used for basic cleaning for Randomization
 
 ```{r}
@@ -49,4 +51,38 @@ b_dice <- b_dice %>%
             are_you_currently_caring_for_any_children_under_the_age_of_5_years), 
            ~ . != 0))
 
+```
+
+## New Cleaning 
+
+This is also used for creating the codebook.
+
+```{r}
+b_dice <- b_dice |>
+  select(-x1) 
+
+# Rename
+b_dice <- b_dice |>
+  rename(enum_id = select_your_name_to_start,
+         enum_name = enter_your_id_number_to_access_the_questionaire,
+         hh_geocode = take_the_household_geocode,
+         phone = do_you_personally_have_a_phone_number,
+         language_pref = if_you_can_read_or_were_to_ask_someones_help_to_read_a_message_sent_to_your_phone_which_language_would_you_prefer_to_receive_the_message,
+         language_other = please_specify_the_other_language_you_prefer_the_language_to_receive_the_message,
+         expecting_child = are_you_currently_expecting_a_child_soon,
+         expecting_weeks = if_expectant_how_many_weeks,
+         caring_child_under5 = are_you_currently_caring_for_any_children_under_the_age_of_5_years,
+         name_nearest_health_facility = what_is_the_name_of_the_nearest_health_facility,
+         km_health_facility = what_is_the_estimated_distance_to_health_facility_in_km,
+         informal_education = attendance_yes_informal,
+         formal_education = attendance_yes_formal,
+         no_formal_informal_edu = attendance_neither_formal_or_informal,
+         formal_level_education = what_is_your_formal_education_level,
+         number_children_under5 = how_many_children_under_the_age_of_five_years_are_living_in_your_household,
+         mch_booklet = does_your_child_own_mch_booklet_containing_his_or_her_immunization_status,
+         gender_child = please_provide_me_name_child_gender_identity,
+         dob_indicated_booklet = is_birth_date_indicated_in_the_booklet,
+         dob_in_booklet = what_is_name_child_date_of_birth_indicated_in_the_mch_booklet
+  )
+         
 ```
