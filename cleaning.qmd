@@ -1,0 +1,52 @@
+---
+title: "UNICEF - Capstone"
+subtitle: "Cleaning Data"
+author: "Insha, Jasmine, Maddie and Zeena"
+format: html
+editor: visual
+embed-resources: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+## Prelimenaries
+
+```{r}
+# Loading Packages
+library(tidyverse)
+library(janitor)
+```
+
+## Loading Data
+
+Loading Survey Data
+
+```{r}
+b_dice <- read_csv("data/dice_baseline_clean.csv")
+```
+
+Older codes that were used for basic cleaning for Randomization
+
+```{r}
+# change variable names to remove spaces
+b_dice <- clean_names(b_dice) 
+
+# make all villages lower case, remove spaces and underscores
+b_dice <- b_dice %>%
+  mutate(village_name = tolower(trimws(village_name)))
+
+b_dice$health_facility_name <- gsub("_", " ", b_dice$health_facility_name)
+
+# check distinct number of villages and facilities
+n_distinct(b_dice$village_name) 
+
+n_distinct(b_dice$health_facility_name) 
+
+# drop individuals who are not caring for children AND are not expecting
+b_dice <- b_dice %>%
+  filter(if_any
+         (c(are_you_currently_expecting_a_child_soon, 
+            are_you_currently_caring_for_any_children_under_the_age_of_5_years), 
+           ~ . != 0))
+
+```
