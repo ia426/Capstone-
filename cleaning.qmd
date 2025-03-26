@@ -25,7 +25,7 @@ Loading Survey Data
 b_dice <- read_csv("data/dice_baseline_clean.csv")
 ```
 
-## Basic Cleaning 
+## Basic Cleaning
 
 Older codes that were used for basic cleaning for Randomization
 
@@ -53,7 +53,7 @@ b_dice <- b_dice %>%
 
 ```
 
-## New Cleaning 
+## New Cleaning
 
 This is also used for creating the codebook.
 
@@ -82,7 +82,27 @@ b_dice <- b_dice |>
          mch_booklet = does_your_child_own_mch_booklet_containing_his_or_her_immunization_status,
          gender_child = please_provide_me_name_child_gender_identity,
          dob_indicated_booklet = is_birth_date_indicated_in_the_booklet,
-         dob_in_booklet = what_is_name_child_date_of_birth_indicated_in_the_mch_booklet
+         dob_in_booklet = what_is_name_child_date_of_birth_indicated_in_the_mch_booklet,
+         opv_0d_0w = vaccines_opv_birth_dose,
+         opv_dpt_pcv_1d_6w = vaccines_opv_dpt_pcv_1st_dose_at_6_weeks,
+         opv_dpt_pcv_2d_10w = vaccines_opv_dpt_pcv_2nd_dose_at_10_weeks,
+         opv_dpt_pcv_3d_14w = vaccines_opv_dpt_pcv_3rd_dose_at_14_weeks,
+         mr_1d_9m = vaccines_mr_dose_1_9_months,
+         mr_2d_18m = vaccines_mr_dose_2_18_months,
+         bcg_booklet = from_the_child_booklet_was_name_child_given_bcg_vaccines,
+         bcg_date = if_yes_what_is_the_date_recorded_on_the_name_child_booklet_that_he_she_has_received_bcg_vaccines,
+        opv_0d_booklet = from_the_child_booklet_was_the_name_child_given_birth_dose_opv,
+        opv_0d_date = if_yes_what_is_the_date_recorded_on_name_child_booklet_that_he_has_received_opv_zero_birth_dose_vaccines,
+        polio_1d_6w_booklet = from_the_child_booklet_was_name_child_given_1st_dose_polio_vaccine_at_6_weeks_given,
+        polio_1d_date = if_yes_what_is_name_child_s_date_given_recorded_for_the1st_dose_polio_vaccine_at_6_weeks,
+       polio_2d_10w_booklet = from_the_child_booklet_was_name_child_given_2nd_dose_polio_vaccine_at_10_weeks_given,
+       polio_2d_date = if_yes_what_is_the_date_given_recorded_for_the_2nd_dose_polio_vaccine_at_10_weeks_given,
+       polio_3d_14w_booklet = from_the_child_booklet_was_name_child_given_3rd_dose_polio_vaccine_at_14_weeks_given ,
+       polio_3d_date = if_yes_what_is_the_date_given_recorded_for_the_3rd_dose_polio_vaccine_at_10_weeks_given,
+       mr_1d_9m_booklet = from_the_child_booklet_was_name_child_given_mr1_at_9_months,
+       mr_1d_date = if_yes_what_is_the_date_given_recorded_for_the_mr1_dose_vaccination,
+       mr_2d_18m_booklet = from_the_child_booklet_was_name_child_given_mr2_at_18_months,
+       mr_2d_date = if_yes_what_is_the_date_given_recorded_for_the_mr2_dose_vaccination
   )
          
 ```
